@@ -1,0 +1,20 @@
+/* Design tokens: fonts and the noir color palette. Change these to re-theme the whole site. */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&display=swap');
+
+:root {
+  /* Palette: midnight noir + desk-lamp amber + red thread */
+  --bg: #0b1020;
+  --surface: #131b36;
+  --ink: #dfe6f5;
+  --muted: #8f9bbd;
+  --line: #2b3560;
+  --signal: #f2b84b;   /* lamp light: available / primary action */
+  --signal-ink: #1a1204;
+  --thread: #d64545;   /* the red thread connecting the roadmap */
+  --bad: #ff7b7b;
+  --ok: #5ec98a;
+
+  /* Type */
+  --serif: 'Pixelify Sans', ui-monospace, 'SF Mono', Menlo, monospace;
+  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}

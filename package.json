@@ -1,0 +1,15 @@
+{
+  "name": "qa-sec-academy",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api start:dev",
+    "build:shared": "pnpm --filter @qasec/shared build",
+    "db:up": "docker compose -f infra/docker-compose.yml up -d",
+    "db:down": "docker compose -f infra/docker-compose.yml down",
+    "db:migrate": "pnpm --filter api exec prisma migrate dev",
+    "lint": "pnpm -r lint"
+  }
+}

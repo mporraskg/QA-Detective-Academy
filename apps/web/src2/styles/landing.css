@@ -1,0 +1,78 @@
+/* Landing page ("/") sections: brief, objective, rank preview, module posters, final CTA. */
+
+.page--landing { padding-bottom: 0; }
+
+/* ===== Brief: storyline intro, styled like a case-file note ===== */
+.brief {
+  background: var(--surface); border: 2px solid var(--line); border-left: 4px solid var(--thread);
+  box-shadow: 4px 4px 0 #04060d; padding: 24px 26px; margin-bottom: 56px;
+}
+.brief h2 { margin-top: 0; }
+.brief p { color: var(--ink); max-width: 68ch; margin: 0 0 14px; }
+.brief p:last-child { margin-bottom: 0; }
+
+/* ===== Program objective ===== */
+.objective { margin-bottom: 56px; }
+.objective__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.objective__list li {
+  position: relative; padding: 10px 16px 10px 40px; background: var(--surface);
+  border: 2px solid var(--line); color: var(--ink);
+}
+.objective__list li::before { content: '✓'; position: absolute; left: 14px; top: 9px; color: var(--ok); font-weight: 700; }
+
+/* ===== Rank ladder =====
+   Shared by the landing preview (RankPreview) and the badges page (RankLadder);
+   state modifiers (.rank--done/current/locked) live in styles/badges.css. */
+.ranks { position: relative; display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 56px; padding-top: 6px; }
+.ranks__thread {
+  position: absolute; left: 0; right: 0; top: 26px; height: 3px; z-index: 0;
+  background: repeating-linear-gradient(to right, var(--thread) 0 6px, transparent 6px 10px);
+}
+.rank { position: relative; z-index: 1; flex: 1 1 160px; min-width: 150px; text-align: center; }
+.rank__shield {
+  --rank-color: #f2b84b;
+  width: 52px; height: 52px; margin: 0 auto 12px; display: grid; place-items: center;
+  background: var(--rank-color); color: #0b1020; font-family: var(--serif); font-weight: 700; font-size: 1.2rem;
+  clip-path: polygon(50% 0%, 100% 18%, 100% 62%, 50% 100%, 0% 62%, 0% 18%);
+  box-shadow: 0 0 0 3px #04060d, 0 0 18px rgba(242, 184, 75, .25);
+}
+.rank__shield--grad { background: linear-gradient(160deg, #fff2c9, #f2b84b); box-shadow: 0 0 0 3px #04060d, 0 0 26px rgba(255, 242, 201, .55); }
+.rank h3 { font-family: var(--serif); font-size: 1rem; margin: 0 0 2px; }
+.rank__role { font-size: .8rem; color: var(--thread); margin: 0 0 8px; }
+.rank__note { font-size: .85rem; color: var(--muted); margin: 0; }
+
+/* ===== Module posters ===== */
+.posters { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-bottom: 56px; }
+.poster-link { display: block; }
+.poster {
+  --stage-color: #f2b84b;
+  position: relative; height: 100%; display: flex; flex-direction: column;
+  background: var(--surface); border: 2px solid var(--stage-color);
+  box-shadow: 4px 4px 0 #04060d; opacity: 0; animation: poster-in .4s steps(6) forwards;
+}
+.poster__ribbon { background: var(--stage-color); color: #0b1020; font-family: var(--serif); font-weight: 700; font-size: .78rem; padding: 6px 12px; }
+.poster__body { padding: 14px 16px; flex: 1; }
+.poster__stage { display: inline-block; font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--stage-color); margin-bottom: 6px; }
+.poster__body h3 { font-family: var(--serif); font-size: 1.02rem; line-height: 1.3; margin: 0 0 8px; color: var(--ink); }
+.poster__body p { font-size: .88rem; color: var(--muted); margin: 0; }
+.poster__foot { padding: 10px 16px; font-size: .85rem; font-weight: 600; color: var(--stage-color); border-top: 2px dashed var(--line); }
+.poster--open:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #04060d; transition: transform .1s steps(2), box-shadow .1s steps(2); }
+.poster--sealed { opacity: .6; }
+.poster--sealed .poster__foot { color: var(--muted); }
+.poster__seal {
+  position: absolute; top: 44%; left: 50%; transform: translate(-50%, -50%) rotate(-10deg);
+  border: 3px solid var(--bad); color: var(--bad); font-family: var(--serif); font-weight: 700;
+  font-size: .95rem; padding: 3px 12px; letter-spacing: .08em; background: rgba(11, 16, 32, .55);
+}
+@keyframes poster-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ===== Final call to action ===== */
+.cta { text-align: center; padding: 48px 24px 72px; border-top: 2px dashed var(--line); margin-top: 8px; }
+.cta h2 { margin-bottom: 8px; }
+.cta p { color: var(--muted); margin: 0 0 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .poster { animation: none; opacity: 1; }
+  .poster--open:hover { transform: none; }
+}
+@media (max-width: 560px) { .ranks__thread { display: none; } }

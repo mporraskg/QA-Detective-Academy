@@ -1,0 +1,57 @@
+/* Profile page (/profile): header, stat tiles, completed cases, and the badge shelf. */
+
+/* ===== Header: avatar + editable name + current rank ===== */
+.profile-header { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-bottom: 32px; }
+.profile-header__avatar {
+  image-rendering: pixelated;
+  background: var(--surface); border: 2px solid var(--line); box-shadow: 4px 4px 0 #04060d;
+  flex: none;
+}
+.profile-header__info { flex: 1; min-width: 220px; }
+.profile-header__name {
+  display: block; background: none; border: 0; padding: 0; margin: 0 0 10px; cursor: pointer;
+  font-family: var(--serif); font-size: 1.6rem; color: var(--ink); text-align: left;
+}
+.profile-header__name:hover { color: var(--signal); }
+.profile-header__name-form { margin: 0 0 10px; }
+.profile-header__name-form input {
+  font-family: var(--serif); font-size: 1.6rem; background: var(--bg); color: var(--ink);
+  border: 2px solid var(--signal); padding: 4px 8px; width: 100%; max-width: 320px;
+}
+.profile-header__rank { display: flex; align-items: center; gap: 14px; }
+.profile-header__rank-name { font-family: var(--serif); font-weight: 700; margin: 0; }
+.profile-header__rank-note { color: var(--muted); font-size: .9rem; margin: 0; }
+
+/* ===== Stat tiles ===== */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 32px; }
+.stat-tile { background: var(--surface); border: 2px solid var(--line); box-shadow: 4px 4px 0 #04060d; padding: 16px 18px; }
+.stat-tile__value { font-family: var(--serif); font-size: 1.5rem; margin: 0 0 4px; color: var(--signal); }
+.stat-tile__label { color: var(--muted); font-size: .85rem; margin: 0; }
+.stat-tile--bar { display: flex; align-items: center; grid-column: 1 / -1; }
+.stat-tile__bar { flex: 1; height: 10px; background: var(--bg); border: 1px solid var(--line); }
+.stat-tile__bar-fill { height: 100%; background: var(--signal); }
+
+/* ===== Current mission callout (reuses .panel from level.css) ===== */
+.current-mission { margin-bottom: 32px; }
+.current-mission h3 { font-family: var(--serif); margin: 4px 0 8px; }
+
+/* ===== Completed cases list ===== */
+.completed-cases { margin-bottom: 32px; }
+.completed-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.completed-item { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 2px solid var(--line); padding: 12px 16px; }
+.completed-item__icon { flex: none; width: 26px; height: 26px; display: grid; place-items: center; background: var(--ok); color: #04140b; }
+.completed-item__body { flex: 1; min-width: 0; }
+.completed-item__body p { margin: 2px 0 0; }
+.completed-item__xp { flex: none; font-family: var(--serif); color: var(--signal); font-size: .9rem; }
+
+/* ===== Badge shelf ===== */
+.badge-collection { margin-bottom: 32px; }
+.badge-collection__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.badge-shelf { display: flex; gap: 22px; flex-wrap: wrap; padding: 12px 0 8px; }
+.badge-shelf__item { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: .85rem; color: var(--muted); }
+
+.profile-footnote { margin-top: 8px; }
+
+@media (max-width: 520px) {
+  .profile-header { flex-direction: column; align-items: flex-start; }
+}
